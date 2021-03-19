@@ -1,0 +1,117 @@
+html, body, .container, #sidebar, #mapContainer{
+  height:100%;
+  margin: 0;
+}
+
+
+.container{
+  display:flex;
+}
+
+.content{
+  margin:25px;
+  background:black;
+  /*
+  outline: thin solid #ffff;
+  outline-style: dotted;
+  */
+}
+
+/* id style definition */
+#sidebar{
+  background: black;
+  /*width: 20%;*/
+  width: 320px;
+}
+
+#mapContainer {
+  flex-grow:1; /* to fill the rest of the page */
+}
+
+#info{
+}
+
+#name, #address, #chairs {
+  color: '#faff00';
+  font-family:'Helvetica';
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-left:5px
+}
+
+
+/* text */
+h1, p {
+  color:white;
+  margin:20px;
+  margin-top:20px;
+}
+
+p {
+  font-family: 'Helvetica', sans-serif;
+  font-size:15px;
+}
+a {
+  text-decoration: none;
+  font-style:italic;
+  color: steelblue;
+}
+
+
+/* legend */
+.legend-box{
+  margin-top:70px;
+  background:black;
+}
+
+.legend {
+  display:flex;
+  margin-left:20px;
+  margin-top:5px;
+  font-family: 'Helvetica', sans-serif;
+  font-size:15px;
+  right: 10px;
+  z-index: 1;
+}
+
+
+
+#type1, #type2, #type3, #type4 {
+  width:10px;
+  border-radius:50%;
+  height:10px;
+  opacity:0.6;
+}
+#type1{
+  background:#faff00;
+}
+#type2{
+  background:#f09835;
+}
+#type3{
+  background:#e63232;
+}
+#type4{
+  background:#3bb2d0;
+}
+
+
+.names {
+  width:60%;
+  margin-left:5px;
+  color:white;
+}
+
+/*
+.legend p {
+margin: 0 0 10px;
+background-color:grey;
+}
+
+.legend div span {
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+*/

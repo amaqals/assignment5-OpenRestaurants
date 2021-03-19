@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset='utf-8' />
+  <title>Public space during covid</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <!-- CSS layers -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div class='container'>
+    <div id='sidebar'>
+      <div class='content'>
+        <h1>Public space during covid</h1>
+        <p> This maps features <a href="https://experience.arcgis.com/experience/ba953db7d541423a8e67ae1cf52bc698">open Restaurants enabled during Covid</a> in NYC. </br></br>
+        Do you want to explore it? Hover on the points to extract information </p>
+
+        <!-- hover interactivity -->
+        <div id='info'>
+          <div><p>Café name:<span id='name'></span></p></div>
+          <div><p>Location:<span id='address'></span></p></div>
+        </div>
+
+        <!-- legend -->
+        <div class='legend-box'>
+          <p>Open Restaurant types</p>
+          <div class="legend">
+            <div class=colors id=type1> </div>
+            <div class=names>Alcohol = yes</div>
+          </div>
+          <div class="legend">
+            <div class=colors id=type2> </div>
+            <div class=names>Alcohol = no</div>
+          </div>
+        </div>
+
+<!--
+             <div><span style="{background-image: url('../icons/bicing-icon.png'); width: 15px; height: 15px;}"></span>normal bikes</div>
+             <div><span style="{background-image: url('../icons/bicing-icon-e.png'); width: 15px; height: 15px;}"></span>electric bikes</div>
+-->
+
+
+
+
+
+      </div>
+
+    </div>
+    <div id='mapContainer'></div>
+  </div>
+
+
+  <!-- js scripts  -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/scripts-sidebar.js"></script>
+  <!-- <script src="js/scripts.js"></script> -->
+
+</body>
+</html>
