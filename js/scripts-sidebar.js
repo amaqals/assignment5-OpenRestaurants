@@ -1,5 +1,3 @@
-
-
 // token
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxiYWxzaW5hIiwiYSI6ImNqdjgzcG02MDAzYXE0NG10bnppcWVubnUifQ.y-ojeFlaX7V1W3DG6eL0fA';
 
@@ -11,28 +9,33 @@ options = {
   zoom: 11 // starting zoom level
 }
 
+
 // load the map
 var map = new mapboxgl.Map(options);
 
-
+// declare other variables variables
 var nameDisplay = document.getElementById('name');
 var addressDisplay = document.getElementById('address');
 
+// add the mapbox geocoder control
+map.addControl(
+  new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })
+);
 
 ////////////////////// SOURCE AND LAYER //////////////////////
 map.on('style.load', function () {
-
 
   map.addSource('openStreets', { // id=openStreets
     type: 'geojson',
     data: 'data/Open_Streets_Locations.geojson'
   });
-
   map.addSource('openRestaurants', { // id=openRestaurants
     type: 'geojson',
     data: 'data/openrestaurants_all.geojson'
   });
-
   map.addSource('zipCount', { // id=zipCount
     type: 'geojson',
     data: 'data/zips_count.geojson'
@@ -43,7 +46,7 @@ map.on('style.load', function () {
     'type': 'fill',
     'source': 'zipCount',
     'layout': {
-      'visibility':'visible'
+      'visibility':'none' // don't load unless button clicked
     },
     'paint': {
       'fill-color': [
@@ -61,7 +64,6 @@ map.on('style.load', function () {
             27.44,
             '#045a8d',
             ],
-        /*'fill-color': '#088',*/
         'fill-opacity':0.5,
         'fill-outline-color':'#ffffff'
     }
@@ -75,28 +77,29 @@ map.on('style.load', function () {
       'visibility':'visible'
     },
     'paint': {
-        'line-color': '#088',
+        'line-color': ['match',
+          ['get', 'type'],
+          'Full Block','#253494',
+          'Full Block - Partner', '#2c7fb8',
+          'Open Streets: Restaurants', '#41b6c4',
+          'Protected Bike Lane', '#a1dab4',
+        '#ccc'], // always include color for "other"
         'line-width': 3
     }
   });
 
   map.addLayer({
-    'id': 'openRestaurants-fill', // layer id
-    'type': 'circle', // fill the polygons
-    'source': 'openRestaurants', // the source to paint
+    'id': 'openRestaurants-fill',
+    'type': 'circle',
+    'source': 'openRestaurants',
     'layout': {},
     'paint': {
-      'circle-color': '#faff00',
-                /* [
-          'match',
+      'circle-color': ['match',
           ['get', 'alcohol'],
-          'yes',
-          '#faff00',
-          'no',
-          '#f09835'
-          ],
-          */
-      'circle-opacity':0.6,
+          'yes', '#faff00', //#fdcc8a
+          'no', '#f09835', //#e34a33
+          '#ccc'], // always include color for "other"
+      'circle-opacity':0.4,
       'circle-radius': 2
     },
   });
@@ -217,3 +220,25 @@ map.on("mouseleave", "openRestaurants-fill", function() {
   map.getCanvas().style.cursor = '';
 });
 ////////////////////// HOVER: reset feature state //////////////////////
+
+
+////////////////////// LAYER STYLE TOGGLE //////////////////////
+$('.button#points_or').on('click', function(){
+  var layerVisibility = map.getLayoutProperty('openRestaurants-fill','visibility')
+  if (layerVisibility=== 'visible') {
+    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
+  } else {
+    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'visible')
+  }
+})
+
+$('.button#corop_or').on('click', function(){
+
+  var layerVisibility = map.getLayoutProperty('zips','visibility')
+  if (layerVisibility=== 'visible') {
+    map.setLayoutProperty('zips', 'visibility', 'none')
+  } else {
+    map.setLayoutProperty('zips', 'visibility', 'visible')
+  }
+})
+////////////////////// LAYER STYLE TOGGLE //////////////////////

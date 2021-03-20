@@ -31,10 +31,22 @@ restaurantName
 bizBoro
 bizZip
 bizAddress
-alcohol
+alcohol yes = '#fdcc8a', no = '#e34a33'
 
 ***** open streets: locations *****
 https://data.cityofnewyork.us/Health/Open-Streets-Locations/uiay-nctu
+
+** types**
+'Full Block' 
+'Full Block - Partner' 
+'Open Streets: Restaurants' 
+'Protected Bike Lane' 
+
+#253494
+#2c7fb8
+#41b6c4
+#a1dab4
+#ffffcc
 
 ***** open streets: official map*****
 https://www1.nyc.gov/html/dot/html/pedestrians/openstreets.shtml#map

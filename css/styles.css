@@ -10,7 +10,8 @@ html, body, .container, #sidebar, #mapContainer{
 
 .content{
   margin:25px;
-  background:black;
+  /*background:CadetBlue;*/
+  background: Black;
   /*
   outline: thin solid #ffff;
   outline-style: dotted;
@@ -29,26 +30,39 @@ html, body, .container, #sidebar, #mapContainer{
 }
 
 #info{
+  /*background: DarkBlue;*/
+  background: Black;
+  padding-top:10px;
+  padding-bottom:10px;
+  height:100px;
 }
 
 #name, #address, #chairs {
-  color: '#faff00';
-  font-family:'Helvetica';
+  color: White; /*make it according to alcohol yes/no*/
+  font-family:Georgia;
   font-size: 12px;
   text-transform: capitalize;
   margin-left:5px
 }
 
+.subtitle{
+  font-size:20px;
+  margin-top:10px;
+}
 
 /* text */
 h1, p {
   color:white;
-  margin:20px;
-  margin-top:20px;
+  /*margin-top:10px;*/
+  margin-left:20px;
+  margin-right:20px;
+  font-family: Georgia;
 }
-
+h1{
+  padding-bottom:50px;
+}
 p {
-  font-family: 'Helvetica', sans-serif;
+  font-family: Georgia;
   font-size:15px;
 }
 a {
@@ -60,20 +74,63 @@ a {
 
 /* legend */
 .legend-box{
-  margin-top:70px;
-  background:black;
+  margin-top:100px;
+  /*background:DarkSlateGrey;*/
+  background: Black;
 }
 
 .legend {
   display:flex;
   margin-left:20px;
   margin-top:5px;
-  font-family: 'Helvetica', sans-serif;
+  font-family: Georgia;
   font-size:15px;
   right: 10px;
   z-index: 1;
 }
 
+.names{
+  font-size:10px;
+}
+
+.names {
+  width:60%;
+  margin-left:5px;
+  color:white;
+}
+
+.mapboxgl-ctrl-geocoder--input{
+  background-color:black;
+}
+
+.button-container{
+  display:flex;
+  margin-left:20px;
+  margin-bottom:20px;
+  height:30px;
+}
+
+.button{
+  margin-right:5px;
+  background-color:black;
+  border: 1px solid white; /* Green */
+  font-family: Georgia;
+  color:white;
+  border-radius:4px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+/*
+.button:active {
+    background: white;
+    color: black;
+}
+*/
 
 
 #type1, #type2, #type3, #type4 {
@@ -88,19 +145,7 @@ a {
 #type2{
   background:#f09835;
 }
-#type3{
-  background:#e63232;
-}
-#type4{
-  background:#3bb2d0;
-}
 
-
-.names {
-  width:60%;
-  margin-left:5px;
-  color:white;
-}
 
 /*
 .legend p {
