@@ -242,7 +242,7 @@ $('.button#off').on('click', function(){
 ////////////////////// LAYER STYLE TOGGLE //////////////////////
 
 ////////////////////// STREET VIEW //////////////////////
-map.on('click', function() {
+map.on('click', function(e) {
 
   // 1. query for the features under the mouse, specify what layers
   var features = map.queryRenderedFeatures(e.point, {
@@ -250,7 +250,7 @@ map.on('click', function() {
     });
 
   // 2. extract adress
-  //var clickedFeature = features[0]
+  var clickedFeature = features[0]
   //var address = clickedFeature.properties.bizAddress
 
   // 3. translate feature's address into lat Lon
