@@ -5,8 +5,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxiYWxzaW5hIiwiYSI6ImNqdjgzcG02MDAzYXE0NG10b
 options = {
   container: 'mapContainer', // container ID, the div
   style: 'mapbox://styles/mapbox/dark-v10',
-  center: [-73.978608,40.760635], // [lng, lat]
-  zoom: 11 // starting zoom level
+  center: [-73.961549,40.707157], // [lng, lat]
+  zoom: 12 // starting zoom level
 }
 
 
@@ -27,6 +27,12 @@ map.addControl(
 
 ////////////////////// SOURCE AND LAYER //////////////////////
 map.on('style.load', function () {
+
+  // override background map style
+  // 1. print on the console: map.getStyle()
+  // 2. enter the "layers",
+  // map.setPaintProperty('road-label', 'text-color','#383c42');
+  // map.setPaintProperty('land', 'background-color','#171716');
 
   map.addSource('openStreets', { // id=openStreets
     type: 'geojson',
@@ -54,18 +60,18 @@ map.on('style.load', function () {
             ['linear'],
             ['get', 'percapita'],
             0.16,
-            '#f1eef6',
+            '#ffffd4',
             0.45,
-            '#bdc9e1',
+            '#fed98e',
             0.82,
-            '#74a9cf',
+            '#fe9929',
             2.04,
-            '#2b8cbe',
+            '#d95f0e',
             27.44,
-            '#045a8d',
+            '#993404',
             ],
         'fill-opacity':0.5,
-        'fill-outline-color':'#ffffff'
+        //'fill-outline-color':'#ffffff'
     }
   });
 
@@ -104,45 +110,29 @@ map.on('style.load', function () {
     },
   });
 
-});
-
-// INTERACTIVITY
-
-/*
+  // INTERACTIVITY
   // empty data source for hover-highlight
   map.addSource('highlight-feature', {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: []
-      },
-      'generateId':true //This ensures that all features have unique IDs
-    })
-
-    // add a layer for the highlighted lot
-    map.addLayer({
-      id: 'highlight-line',
-      type: 'circle',
-      source: 'highlight-feature',
-      paint: {
-        'circle-stroke-color':'#ffffff',
-        'circle-stroke-width':2,
-        'circle-opacity':1,
-        'circle-radius':{
-          'property':'APP_CHAIRS',
-              stops:[
-                [{zoom: 8, value: 2}, 1], //min.nr of chairs
-                [{zoom: 8, value: 135}, 2], // max.nr of chairs
-                [{zoom: 11, value: 2}, 1],
-                [{zoom: 11, value: 135}, 6],
-                [{zoom: 16, value: 2}, 1],
-                [{zoom: 16, value: 135}, 40]
-              ]
-        }
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        },
+        'generateId':true // unique IDs for all features
+      })
+  map.addLayer({
+    id: 'highlight-line',
+    type: 'circle',
+    source: 'highlight-feature',
+    paint: {
+      'circle-stroke-color':'#ffffff',
+      'circle-stroke-width':1,
+      'circle-opacity':1,
+      'circle-radius':4
       }
-    });
+  });
+  // INTERACTIVITY
 });
-*/
 ////////////////////// SOURCE AND LAYER //////////////////////
 
 ////////////////////// HOVER INTERACTIVITY //////////////////////
@@ -154,7 +144,6 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
 
   // Set variables equal to the current feature's magnitude, location, and time
-
   var openrestaurantName = e.features[0].properties.restaurantName
   var openrestaurantAddress = e.features[0].properties.bizAddress
 
@@ -169,10 +158,8 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
     }
     addressDisplay.textContent = openrestaurantAddress.toLowerCase();
 
-
-
-    // set this lot's polygon feature as the data for the highlight source
-    map.getSource('highlight-feature').setData(e.features[0].geometry);
+  // set this lot's polygon feature as the data for the highlight source
+  map.getSource('highlight-feature').setData(e.features[0].geometry);
 
         // If restaurantID for the hovered feature is not null,
         // use removeFeatureState to reset to the default behavior
@@ -197,9 +184,6 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
 });
 ////////////////////// HOVER INTERACTIVITY //////////////////////
 
-
-
-
 ////////////////////// HOVER: reset feature state //////////////////////
 map.on("mouseleave", "openRestaurants-fill", function() {
   if (restaurantID) {
@@ -223,12 +207,15 @@ map.on("mouseleave", "openRestaurants-fill", function() {
 
 
 ////////////////////// LAYER STYLE TOGGLE //////////////////////
+// Openrestaurants
 $('.button#points_or').on('click', function(){
   var layerVisibility = map.getLayoutProperty('openRestaurants-fill','visibility')
   if (layerVisibility=== 'visible') {
     map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
+    map.setLayoutProperty('zips', 'visibility', 'visible')
   } else {
     map.setLayoutProperty('openRestaurants-fill', 'visibility', 'visible')
+    map.setLayoutProperty('zips', 'visibility', 'none')
   }
 })
 
@@ -237,8 +224,19 @@ $('.button#corop_or').on('click', function(){
   var layerVisibility = map.getLayoutProperty('zips','visibility')
   if (layerVisibility=== 'visible') {
     map.setLayoutProperty('zips', 'visibility', 'none')
+    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'visible')
   } else {
     map.setLayoutProperty('zips', 'visibility', 'visible')
+    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
   }
+})
+
+//Streets
+$('.button#on').on('click', function(){
+  map.setLayoutProperty('streets', 'visibility', 'visible')
+})
+
+$('.button#off').on('click', function(){
+  map.setLayoutProperty('streets', 'visibility', 'none')
 })
 ////////////////////// LAYER STYLE TOGGLE //////////////////////

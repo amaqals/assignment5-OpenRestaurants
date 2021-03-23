@@ -107,7 +107,7 @@ a {
   display:flex;
   margin-left:20px;
   margin-bottom:20px;
-  height:30px;
+  height:35px;
 }
 
 .button{
@@ -125,12 +125,12 @@ a {
     color: black;
 }
 
-/*
+
 .button:active {
-    background: white;
+    background-color: white;
     color: black;
 }
-*/
+
 
 
 #type1, #type2, #type3, #type4 {
