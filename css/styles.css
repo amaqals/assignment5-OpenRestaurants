@@ -1,10 +1,10 @@
-html, body, .container, #sidebar, #mapContainer{
+html, body, .mycontainer, #sidebar, #mapContainer{
   height:100%;
   margin: 0;
 }
 
 
-.container{
+.mycontainer{
   display:flex;
 }
 
@@ -89,6 +89,11 @@ a {
   z-index: 1;
 }
 
+.streetview {
+  margin-left:20px;
+  margin-right:20px;
+}
+
 .names{
   font-size:10px;
 }
@@ -131,6 +136,14 @@ a {
     color: black;
 }
 
+/* twick bootstrap button */
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: Georgia;
+    font-size: 13px;
+    line-height: 15px;
+}
 
 
 #type1, #type2, #type3, #type4 {
