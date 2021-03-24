@@ -25,6 +25,11 @@ map.addControl(
   })
 );
 
+// open the Modal when loading the page
+
+$(window).on('load', function() {
+        $('#welcomeModal').modal('show');
+    });
 ////////////////////// SOURCE AND LAYER //////////////////////
 map.on('style.load', function () {
 
@@ -212,7 +217,7 @@ map.on("mouseleave", "openRestaurants-fill", function() {
 
 ////////////////////// LAYER STYLE TOGGLE //////////////////////
 // Openrestaurants
-$('.button#points_or').on('click', function(){
+$('.btn-outline-light#points_or').on('click', function(){
   var layerVisibility = map.getLayoutProperty('openRestaurants-fill','visibility')
   if (layerVisibility=== 'visible') {
     map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
@@ -223,7 +228,7 @@ $('.button#points_or').on('click', function(){
   }
 })
 
-$('.button#corop_or').on('click', function(){
+$('.btn-outline-light#corop_or').on('click', function(){
 
   var layerVisibility = map.getLayoutProperty('zips','visibility')
   if (layerVisibility=== 'visible') {
@@ -236,11 +241,11 @@ $('.button#corop_or').on('click', function(){
 })
 
 //Streets
-$('.button#on').on('click', function(){
+$('.btn-outline-light#on').on('click', function(){
   map.setLayoutProperty('streets', 'visibility', 'visible')
 })
 
-$('.button#off').on('click', function(){
+$('.btn-outline-light#off').on('click', function(){
   map.setLayoutProperty('streets', 'visibility', 'none')
 })
 ////////////////////// LAYER STYLE TOGGLE //////////////////////
@@ -259,6 +264,16 @@ map.on('click', function(e) {
     var clickedFeature = features[0]
 
     // 3. translate feature's address into lat Lon
+    var lat = clickedFeature.geometry.coordinates[1];
+    var lng = clickedFeature.geometry.coordinates[0];
+    var streetViewURL = `https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAOl1hnQKSEqrQVZQLCrtnN6TcHBfZj9Ng&location=${lat},${lng}`
+    var streetViewURL = `https://www.google.com/maps/embed/v1/streetview?key=AIzaSyDWMBLd63JIbse-T6pf3rndGQtUAW0hEd0&location=${lat},${lng}`
+    // 4. populate iframe code with lat lon
+    var streetviewIframeCode = `
+      <iframe src="${streetViewURL}" width="215" height="185" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ; // try zoomControl: "false" to hide it
+    $('.streetview').html(streetviewIframeCode)
+    /*
+    // 3. translate feature's address into lat Lon
     var lat = clickedFeature.geometry.coordinates[0];
     var lng = clickedFeature.geometry.coordinates[1];
     //console.log(lat, lng) to check if it works fine (it does)
@@ -270,8 +285,9 @@ map.on('click', function(e) {
     console.log(streetviewIframeCode2) // to check if it retrieves url properly
 
     //$('.streetview').html('<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d-73.95142078399658!2d40.71104443695043!3f51.716908!4f0!5f0.7820865974627469" width="220" height="190" style="border:0;" allowfullscreen="" loading="lazy"></iframe>')
-    $('.streeview').html(streetviewIframeCode2)
+    $('.streetview').html(streetviewIframeCode2)
     //$('.streeview').html(clickedFeature.properties.streetviewIframeCode)
+    */
   }
 })
 ////////////////////// STREET VIEW //////////////////////

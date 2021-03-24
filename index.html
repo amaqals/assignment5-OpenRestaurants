@@ -58,8 +58,8 @@
           </div>
           <!-- buttons -->
           <div class='button-container'>
-                  <button class='button' id='points_or'>Restaurant Locations</button>
-                  <button class='button' id='corop_or'>Restaurants per capita</button>
+                  <button type="button" class="btn btn-outline-light" id='points_or'>Restaurant Locations</button>
+                  <button type="button" class="btn btn-outline-light" id='corop_or'>Restaurants per capita</button>
           </div>
           <!-- mini-legend -->
           <div class="legend">
@@ -88,8 +88,13 @@
           </div>
           <!-- buttons -->
           <div class='button-container'>
+
+                  <button type="button" class="btn btn-outline-light" id='on'>Enable</button>
+                  <button type="button" class="btn btn-outline-light" id='off'>Disable</button>
+                  <!--
                   <button class='button' id='on'>Enable</button>
                   <button class='button' id='off'>Disable</button>
+                  -->
           </div>
           <!-- mini-legend -->
           <div class="legend">
@@ -109,7 +114,29 @@
             <div class=names>Protected Bike Lane</div>
           </div>
         </div>
+        <div class="legend">
+          <button type="button" class="btn btn-dark btn-sm" id='about-btn' data-toggle="modal" data-target="#welcomeModal">
+            About this map
+          </button>
+        </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis nisi consectetur nulla pellentesque, sed gravida lectus efficitur. In a lorem gravida, elementum velit ac, laoreet magna. Proin elementum cursus sapien, sed elementum sem euismod at. Phasellus semper ut lorem eget rhoncus. Aenean porta erat at fermentum ornare. Integer eu elementum libero. Pellentesque elit quam, tristique eget suscipit ac, sagittis ac augue. Integer scelerisque leo dolor, aliquam condimentum diam faucibus nec. Vivamus turpis mi, vehicula vel tellus sit amet, luctus commodo dolor. Suspendisse potenti. Maecenas in lobortis enim, quis semper ante. Curabitur neque nisi, egestas id nibh ac, auctor fringilla elit. Vivamus consequat auctor tortor, ac pharetra diam blandit non.
+              </div>
+
+            </div>
+          </div>
+        </div>
 <!--
              <div><span style="{background-image: url('../icons/bicing-icon.png'); width: 15px; height: 15px;}"></span>normal bikes</div>
              <div><span style="{background-image: url('../icons/bicing-icon-e.png'); width: 15px; height: 15px;}"></span>electric bikes</div>
@@ -122,8 +149,10 @@
       </div>
 
     </div>
-    <div id='mapContainer'></div>
-  </div>
+    <div id='mapContainer'>
+    </div>
+    <!-- Button trigger modal -->
+
 
 
   <!-- js scripts  -->
