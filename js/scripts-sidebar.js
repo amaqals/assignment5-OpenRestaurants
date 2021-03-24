@@ -139,16 +139,19 @@ map.on('style.load', function () {
 var restaurantID = null;
 
 // retrieve hover
-map.on('mousemove', 'openRestaurants-fill', (e) => {
+map.on('mousemove', 'openRestaurants-fill', function(e)  {
   //console.log(e)
   map.getCanvas().style.cursor = 'pointer';
 
-  // Set variables equal to the current feature's magnitude, location, and time
-  var openrestaurantName = e.features[0].properties.restaurantName
-  var openrestaurantAddress = e.features[0].properties.bizAddress
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['openRestaurants-fill']
+  })
 
   // Check whether features exist
-  if (e.features.length > 0) {
+  if (features.length > 0) {
+    var hoveredFeature = features[0]
+    var openrestaurantName = hoveredFeature.properties.restaurantName
+    var openrestaurantAddress = hoveredFeature.properties.bizAddress
 
     // Display the information in the sidebar
     if (openrestaurantName == null){
@@ -158,8 +161,8 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
     }
     addressDisplay.textContent = openrestaurantAddress.toLowerCase();
 
-  // set this lot's polygon feature as the data for the highlight source
-  map.getSource('highlight-feature').setData(e.features[0].geometry);
+  // set this point feature as the data for the highlight source
+  map.getSource('highlight-feature').setData(hoveredFeature.geometry);
 
         // If restaurantID for the hovered feature is not null,
         // use removeFeatureState to reset to the default behavior
@@ -170,9 +173,9 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
           });
         }
 
-        restaurantID = e.features[0].id;
+        restaurantID = hoveredFeature.id;
 
-        // When the mouse moves over the sidewalkcafe-viz layer, update the
+        // When the mouse moves over the openrestaurant layer, update the
         // feature state for the feature under the mouse
         map.setFeatureState({
           source: 'openRestaurants',
@@ -180,6 +183,7 @@ map.on('mousemove', 'openRestaurants-fill', (e) => {
         }, {
           hover: true
         });
+
     };
 });
 ////////////////////// HOVER INTERACTIVITY //////////////////////
@@ -250,19 +254,23 @@ map.on('click', function(e) {
     });
 
   if (features.length > 0) {
+
     // 2. extract adress
     var clickedFeature = features[0]
-    //var address = clickedFeature.properties.bizAddress
 
     // 3. translate feature's address into lat Lon
     var lat = clickedFeature.geometry.coordinates[0];
     var lng = clickedFeature.geometry.coordinates[1];
-    console.log(lat, lng)
+    //console.log(lat, lng) to check if it works fine (it does)
 
     // 4. populate iframe code with lat lon
-    var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d${lat}!2d${lng}!3f51.716908!4f0!5f0.7820865974627469" width="250" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>` ;
-    $('.streeview').html(streetviewIframeCode)
+    var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d${lat}!2d${lng}!3f51.716908!4f0!5f0.7820865974627469" width="230" height="180" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>` ; // try zoomControl: "false" to hide it
+    var streetviewIframeCode2 = "'"+streetviewIframeCode+"'";
+    console.log(streetviewIframeCode2) // to check if it retrieves url properly
+
+    //$('.streetview').html('<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d-73.95142078399658!2d40.71104443695043!3f51.716908!4f0!5f0.7820865974627469" width="220" height="190" style="border:0;" allowfullscreen="" loading="lazy"></iframe>')
+    $('.streeview').html(streetviewIframeCode2)
     //$('.streeview').html(clickedFeature.properties.streetviewIframeCode)
   }
 })

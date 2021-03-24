@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8' />
-  <title>Public space during covid</title>
+  <title>Streets during covid</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
@@ -20,21 +20,43 @@
   <div class='mycontainer'>
     <div id='sidebar'>
       <div class='content'>
-        <h1>Public space during covid</h1>
+        <h1>Streets during covid</h1>
+        <!--
         <p> This maps features <a href="https://experience.arcgis.com/experience/ba953db7d541423a8e67ae1cf52bc698">open Restaurants enabled during Covid</a> in NYC. </br></br>
         Do you want to explore it? Hover on the points to extract information </p>
-        <div class='streetview'>
-          <!--
-          <iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d40.73992368780566!2d-73.98577146689969!3f51.716908!4f0!5f0.7820865974627469" width="250" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          -->
-        </div>
-
+        -->
 
         <!-- general legend -->
         <div class='legend-box'>
 
-          <!-- Open Restaurants -->
+          <!-- 1. STREET VIEW -->
+          <!-- title -->
+          <div class='title-container'>
+              <p class='subtitle'>Street view</p>
+              <div class="help-tip">
+                <p>Click on the restaurant points to display the street view.<br />
+                  <a href="#">Here is a link</a>
+                </p>
+              </div>
+          </div>
+          <!-- box to place streetview -->
+          <div class='mini-container'>
+            <div class='streetview'>
+
+            </div>
+          </div>
+
+
+          <!-- 2. OPEN RESTAURANTS -->
+          <!-- title -->
+          <div class='title-container'>
           <p class='subtitle'>Open Restaurants</p>
+          <div class="help-tip">
+            <p>Click on the restaurant points to display the street view.<br />
+              <a href="#">Here is a link</a>
+            </p>
+          </div>
+          </div>
           <!-- buttons -->
           <div class='button-container'>
                   <button class='button' id='points_or'>Restaurant Locations</button>
@@ -55,8 +77,16 @@
             <div><p>Location:<span id='address'></span></p></div>
           </div>
 
-          <!-- Open Streets -->
-          <p class='subtitle'>Open Streets</p>
+          <!-- 3. OPEN STREETS -->
+          <!-- title -->
+          <div class='title-container'>
+            <p class='subtitle'>Open Streets</p>
+            <div class="help-tip">
+              <p>Click on the restaurant points to display the street view.<br />
+                <a href="#">Here is a link</a>
+              </p>
+            </div>
+          </div>
           <!-- buttons -->
           <div class='button-container'>
                   <button class='button' id='on'>Enable</button>

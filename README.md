@@ -51,6 +51,10 @@ https://developers.google.com/maps/documentation/javascript/streetview#StreetVie
 https://stackoverflow.com/questions/40672983/can-i-use-mapbox-for-street-view-like-google-maps-street-view
 https://jsfiddle.net/api/post/library/pure/
 
+tune streetview options
+https://developers.google.com/maps/documentation/embed/embedding-map
+
+
 ***** other tutorials*****
  https://docs.mapbox.com/mapbox-gl-js/example/cluster/
 https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
