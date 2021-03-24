@@ -60,15 +60,15 @@ map.on('style.load', function () {
             ['linear'],
             ['get', 'percapita'],
             0.16,
-            '#ffffd4',
+            '#fff8dc',
             0.45,
-            '#fed98e',
+            '#f5b8af',
             0.82,
-            '#fe9929',
+            '#ef8f92',
             2.04,
-            '#d95f0e',
+            '#e75b6d',
             27.44,
-            '#993404',
+            '#dc143c',
             ],
         'fill-opacity':0.5,
         //'fill-outline-color':'#ffffff'
@@ -102,10 +102,10 @@ map.on('style.load', function () {
     'paint': {
       'circle-color': ['match',
           ['get', 'alcohol'],
-          'yes', '#faff00', //#fdcc8a
-          'no', '#f09835', //#e34a33
+          'yes', '#FFF8DC', //#fdcc8a
+          'no', '#DC143C', //#e34a33
           '#ccc'], // always include color for "other"
-      'circle-opacity':0.4,
+      'circle-opacity':0.7,
       'circle-radius': 2
     },
   });
