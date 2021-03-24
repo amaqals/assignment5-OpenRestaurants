@@ -8,6 +8,9 @@
 ***** sidewalk cafe update *****
 https://www1.nyc.gov/site/dca/businesses/license-checklist-sidewalk-cafe.page
 
+***** open streets*****
+https://www1.nyc.gov/html/dot/html/pedestrians/openstreets
+
 ***** open streets: restaurants *****
  https://www1.nyc.gov/html/dot/html/pedestrians/openstreets-restaurants.shtml#locations
 
