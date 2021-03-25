@@ -7,24 +7,21 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css">
   <!-- bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
   <!-- CSS layers -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+  <!-- geocoder -->
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+  <!-- geocoder -->
 
   <div class='mycontainer'>
     <div id='sidebar'>
       <div class='content'>
-        <h1>Streets during covid</h1>
-        <!--
-        <p> This maps features <a href="https://experience.arcgis.com/experience/ba953db7d541423a8e67ae1cf52bc698">open Restaurants enabled during Covid</a> in NYC. </br></br>
-        Do you want to explore it? Hover on the points to extract information </p>
-        -->
+        <h1>Streets of NYC during covid</h1>
 
         <!-- general legend -->
         <div class='legend-box'>
@@ -41,7 +38,6 @@
           <!-- box to place streetview -->
           <div class='mini-container'>
             <div class='streetview'>
-
             </div>
           </div>
 
@@ -88,13 +84,8 @@
           </div>
           <!-- buttons -->
           <div class='button-container'>
-
-                  <button type="button" class="btn btn-outline-light" id='on'>Enable</button>
-                  <button type="button" class="btn btn-outline-light" id='off'>Disable</button>
-                  <!--
-                  <button class='button' id='on'>Enable</button>
-                  <button class='button' id='off'>Disable</button>
-                  -->
+                  <button type="button" class="btn btn-outline-light" id='on'>Enabled</button>
+                  <button type="button" class="btn btn-outline-light" id='off'>Disabled</button>
           </div>
           <!-- mini-legend -->
           <div class="legend">
@@ -133,26 +124,13 @@
               <div class="modal-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis nisi consectetur nulla pellentesque, sed gravida lectus efficitur. In a lorem gravida, elementum velit ac, laoreet magna. Proin elementum cursus sapien, sed elementum sem euismod at. Phasellus semper ut lorem eget rhoncus. Aenean porta erat at fermentum ornare. Integer eu elementum libero. Pellentesque elit quam, tristique eget suscipit ac, sagittis ac augue. Integer scelerisque leo dolor, aliquam condimentum diam faucibus nec. Vivamus turpis mi, vehicula vel tellus sit amet, luctus commodo dolor. Suspendisse potenti. Maecenas in lobortis enim, quis semper ante. Curabitur neque nisi, egestas id nibh ac, auctor fringilla elit. Vivamus consequat auctor tortor, ac pharetra diam blandit non.
               </div>
-
             </div>
           </div>
         </div>
-<!--
-             <div><span style="{background-image: url('../icons/bicing-icon.png'); width: 15px; height: 15px;}"></span>normal bikes</div>
-             <div><span style="{background-image: url('../icons/bicing-icon-e.png'); width: 15px; height: 15px;}"></span>electric bikes</div>
--->
-
-
-
-
-
       </div>
-
     </div>
     <div id='mapContainer'>
-    </div>
-    <!-- Button trigger modal -->
-
+  </div>
 
 
   <!-- js scripts  -->
@@ -164,7 +142,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="js/scripts-sidebar.js"></script>
-  <!-- <script src="js/scripts.js"></script> -->
 
 </body>
 </html>

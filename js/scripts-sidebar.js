@@ -76,7 +76,6 @@ map.on('style.load', function () {
             '#dc143c',
             ],
         'fill-opacity':0.5,
-        //'fill-outline-color':'#ffffff'
     }
   });
 
@@ -107,8 +106,8 @@ map.on('style.load', function () {
     'paint': {
       'circle-color': ['match',
           ['get', 'alcohol'],
-          'yes', '#FFF8DC', //#fdcc8a
-          'no', '#DC143C', //#e34a33
+          'yes', '#FFF8DC',
+          'no', '#DC143C',
           '#ccc'], // always include color for "other"
       'circle-opacity':0.7,
       'circle-radius': 2
@@ -262,32 +261,15 @@ map.on('click', function(e) {
 
     // 2. extract adress
     var clickedFeature = features[0]
-
-    // 3. translate feature's address into lat Lon
     var lat = clickedFeature.geometry.coordinates[1];
     var lng = clickedFeature.geometry.coordinates[0];
-    var streetViewURL = `https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAOl1hnQKSEqrQVZQLCrtnN6TcHBfZj9Ng&location=${lat},${lng}`
+    //var streetViewURL = `https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAOl1hnQKSEqrQVZQLCrtnN6TcHBfZj9Ng&location=${lat},${lng}`
     var streetViewURL = `https://www.google.com/maps/embed/v1/streetview?key=AIzaSyDWMBLd63JIbse-T6pf3rndGQtUAW0hEd0&location=${lat},${lng}`
-    // 4. populate iframe code with lat lon
+
+    // 3. populate iframe code with lat lon
     var streetviewIframeCode = `
-      <iframe src="${streetViewURL}" width="215" height="185" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ; // try zoomControl: "false" to hide it
+      <iframe src="${streetViewURL}" width="220" height="185" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ; // try zoomControl: "false" to hide it
     $('.streetview').html(streetviewIframeCode)
-    /*
-    // 3. translate feature's address into lat Lon
-    var lat = clickedFeature.geometry.coordinates[0];
-    var lng = clickedFeature.geometry.coordinates[1];
-    //console.log(lat, lng) to check if it works fine (it does)
-
-    // 4. populate iframe code with lat lon
-    var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d${lat}!2d${lng}!3f51.716908!4f0!5f0.7820865974627469" width="230" height="180" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>` ; // try zoomControl: "false" to hide it
-    var streetviewIframeCode2 = "'"+streetviewIframeCode+"'";
-    console.log(streetviewIframeCode2) // to check if it retrieves url properly
-
-    //$('.streetview').html('<iframe src="https://www.google.com/maps/embed?pb=!4v1616519326668!6m8!1m7!1slB21k-VAQawqPH8l9egDPg!2m2!1d-73.95142078399658!2d40.71104443695043!3f51.716908!4f0!5f0.7820865974627469" width="220" height="190" style="border:0;" allowfullscreen="" loading="lazy"></iframe>')
-    $('.streetview').html(streetviewIframeCode2)
-    //$('.streeview').html(clickedFeature.properties.streetviewIframeCode)
-    */
   }
 })
 ////////////////////// STREET VIEW //////////////////////
