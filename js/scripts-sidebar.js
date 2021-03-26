@@ -218,9 +218,8 @@ map.on("mouseleave", "openRestaurants-fill", function() {
 // Openrestaurants
 $('.btn-outline-light#points_or').on('click', function(){
   var layerVisibility = map.getLayoutProperty('openRestaurants-fill','visibility')
-  if (layerVisibility=== 'visible') {
-    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
-    map.setLayoutProperty('zips', 'visibility', 'visible')
+  if (layerVisibility === 'visible') {
+    map.setLayoutProperty('zips', 'visibility', 'none')
   } else {
     map.setLayoutProperty('openRestaurants-fill', 'visibility', 'visible')
     map.setLayoutProperty('zips', 'visibility', 'none')
@@ -230,12 +229,15 @@ $('.btn-outline-light#points_or').on('click', function(){
 $('.btn-outline-light#corop_or').on('click', function(){
 
   var layerVisibility = map.getLayoutProperty('zips','visibility')
-  if (layerVisibility=== 'visible') {
-    map.setLayoutProperty('zips', 'visibility', 'none')
-    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'visible')
+  if (layerVisibility === 'visible') {
+    map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
+
   } else {
     map.setLayoutProperty('zips', 'visibility', 'visible')
     map.setLayoutProperty('openRestaurants-fill', 'visibility', 'none')
+    map.fitBounds([
+       /*[-74.459839,40.473069],[-73.153152,40.960715]*/
+       [-74.599228,40.434928],[-73.292542,40.922852]])
   }
 })
 
