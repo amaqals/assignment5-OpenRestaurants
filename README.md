@@ -49,30 +49,5 @@ https://data.cityofnewyork.us/Health/Open-Streets-Locations/uiay-nctu
 https://www1.nyc.gov/html/dot/html/pedestrians/openstreets.shtml#map
 
 
-***** add GoogleStreetView to MapboxGL*****
-https://developers.google.com/maps/documentation/javascript/streetview#StreetView
-https://stackoverflow.com/questions/40672983/can-i-use-mapbox-for-street-view-like-google-maps-street-view
-https://jsfiddle.net/api/post/library/pure/
-
-tune streetview options
-https://developers.google.com/maps/documentation/embed/embedding-map
-
-
-***** other tutorials*****
- https://docs.mapbox.com/mapbox-gl-js/example/cluster/
-https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
-
-
 ***** NYC zipcodes *****
 https://data.beta.nyc/dataset/nyc-zip-code-tabulation-areas
-
-***** COLORRAMPS *****
-** BLUES
-#253494
-#2c7fb8
-#41b6c4
-#a1dab4
-#ffffcc
-
-** YELLOW
-['#ffffd4','#fed98e','#fe9929','#d95f0e','#993404']
