@@ -268,7 +268,7 @@ map.on('click', function(e) {
 
     // 3. populate iframe code with lat lon
     var streetviewIframeCode = `
-      <iframe src="${streetViewURL}" width="350" height="185" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ; // try zoomControl: "false" to hide it
+      <iframe src="${streetViewURL}" width="355" height="190" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ; // try zoomControl: "false" to hide it
     $('.streetview').html(streetviewIframeCode)
   }
 })

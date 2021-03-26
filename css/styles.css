@@ -17,6 +17,7 @@ html, body, .mycontainer, #sidebar, #mapContainer{
   background: black;
   /*width: 20%;*/
   width: 450px;
+  overflow-x: visible;
   overflow-y:scroll; /* Add the ability to scroll */
   -ms-overflow-style: none;  /* hide scrollbar for IE and Edge */
   scrollbar-width: none;  /* hide scrollbar for Firefox */
@@ -110,9 +111,168 @@ a {
   color:white;
 }
 
-.mapboxgl-ctrl-geocoder--input{
-  background-color:yellow;
+/* mapbox geocoder - change color */
+/* Basics */
+.mapboxgl-ctrl-geocoder,
+.mapboxgl-ctrl-geocoder *,
+.mapboxgl-ctrl-geocoder *:after,
+.mapboxgl-ctrl-geocoder *:before {
+  box-sizing: border-box;
 }
+
+.mapboxgl-ctrl-geocoder {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: Georgia;
+  position: relative;
+  background-color: #000;
+  width: 100%;
+  min-width: 240px;
+  z-index: 1;
+  border-radius: 4px;
+  transition: width .25s, min-width .25s;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  font: inherit;
+  width: 100%;
+  border: 0;
+  background-color: #000000
+  margin: 0;
+  height: 50px;
+  color: #ffffff; /* fallback */
+  color: #ffffff
+  padding: 6px 45px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mapboxgl-ctrl-geocoder--input::-ms-clear {
+  display: none; /* hide input clear button in IE */
+}
+
+.mapboxgl-ctrl-geocoder--input:focus {
+  color: #ffffff; /* fallback */
+  color: #ffffff
+  outline: 0;
+  box-shadow: none;
+  outline: thin dotted;
+}
+
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--pin-right > * {
+  z-index: 2;
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder,
+.mapboxgl-ctrl-geocoder .suggestions {
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+}
+
+/* Collapsed */
+.mapboxgl-ctrl-geocoder.mapboxgl-ctrl-geocoder--collapsed {
+  width: 50px;
+  min-width: 50px;
+  transition: width .25s, min-width .25s;
+}
+
+/* Suggestions */
+.mapboxgl-ctrl-geocoder .suggestions {
+  background-color: #212529;
+  border-radius: 4px;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  top: 110%; /* fallback */
+  top: calc(100% + 6px);
+  z-index: 1000;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.mapboxgl-ctrl-bottom-left .suggestions,
+.mapboxgl-ctrl-bottom-right .suggestions {
+  top: auto;
+  bottom: 100%;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions > li > a {
+  cursor: default;
+  display: block;
+  padding: 6px 12px;
+  color: #a6a9ad;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions > .active > a,
+.mapboxgl-ctrl-geocoder .suggestions > li > a:hover {
+  color: #ffffff;
+  background-color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-title {
+  font-weight: bold;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-title,
+.mapboxgl-ctrl-geocoder--suggestion-address {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Icons */
+.mapboxgl-ctrl-geocoder--icon {
+  display: inline-block;
+  vertical-align: middle;
+  speak: none;
+  fill: #757575;
+  top: 15px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  width: 23px;
+  height: 23px;
+}
+
+.mapboxgl-ctrl-geocoder--button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  background: #000000;
+  line-height: 1;
+}
+
+.mapboxgl-ctrl-geocoder--icon-close {
+  width: 20px;
+  height: 20px;
+  margin-top: 8px;
+  margin-right: 3px;
+}
+
+.mapboxgl-ctrl-geocoder--button:hover .mapboxgl-ctrl-geocoder--icon-close {
+  fill: #ffffff;
+}
+
+
+/* mapbox geocoder - change color */
+
+
+
+
+
 
 .button-container{
   background-color:black;
@@ -174,15 +334,10 @@ button, input, optgroup, select, textarea {
 /* information icon */
 /* The icon */
 .help-tip{
-	position: relative;
-  left: 380px;
-  bottom: 30px;
-  /*
-  top: 20%;
-	left: 20%;
-  */
+  position: absolute;
 	transform: translate(-50%, -50%);
-  margin-left:0px;
+  margin-left:380px;
+  margin-top:-30px;
   margin-right:5px;
 	text-align: center;
 	border: 1px dotted #808080;
@@ -190,10 +345,8 @@ button, input, optgroup, select, textarea {
 	width: 20px;
 	height: 20px;
 	font-size: 12px;
-	/*line-height: 21px;*/
 	cursor: default;
-  z-index: 99;
-
+  z-index: 999;
 }
 
 .help-tip:before{
@@ -245,7 +398,7 @@ button, input, optgroup, select, textarea {
 
 /* The pointer of the tooltip */
 .help-tip p:before {
-	position: absolute;
+	/*position: absolute;*/
 	content: '';
 	width: 0;
 	height: 0;
@@ -258,10 +411,10 @@ button, input, optgroup, select, textarea {
 
  /* Prevents the tooltip from being hidden */
 .help-tip p:after {
+  /*position: absolute;*/
 	width: 10px;
 	height: 40px;
 	content:'';
-	position: absolute;
 	top: -40px;
 	left: 0;
   z-index: 99;
@@ -281,14 +434,14 @@ button, input, optgroup, select, textarea {
 
 #about-btn {
   position:absolute;
-  right:260px;
+  right:300px;
   top:10px;
   z-index:1;
-  background-color:#FFFFFF;
+  background-color:black;
   border-color:black;
-  color:grey;
+  color:white;
   radius:0px;
-  height:35px;
+  height:50px;
 }
 
 .modal-content{
